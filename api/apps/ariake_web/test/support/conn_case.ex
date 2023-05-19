@@ -32,7 +32,7 @@ defmodule AriakeWeb.ConnCase do
   end
 
   setup tags do
-    AriakeWeb.DataCase.setup_sandbox(tags)
+    Ariake.DataCase.setup_sandbox(tags)
     {:ok, conn: Phoenix.ConnTest.build_conn()}
   end
 end

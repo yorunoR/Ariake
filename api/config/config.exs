@@ -9,9 +9,22 @@
 # move said applications out of the umbrella.
 import Config
 
+# Configure Mix tasks and generators
+config :ariake,
+  ecto_repos: [Ariake.Repo]
+
+# Configures the mailer
+#
+# By default it uses the "Local" adapter which stores the emails
+# locally. You can see the emails in your browser, at "/dev/mailbox".
+#
+# For production it's recommended to configure a different adapter
+# at the `config/runtime.exs`.
+config :ariake, Ariake.Mailer, adapter: Swoosh.Adapters.Local
+
 config :ariake_web,
-  ecto_repos: [AriakeWeb.Repo],
-  generators: [context_app: false]
+  ecto_repos: [Ariake.Repo],
+  generators: [context_app: :ariake]
 
 # Configures the endpoint
 config :ariake_web, AriakeWeb.Endpoint,
@@ -20,8 +33,8 @@ config :ariake_web, AriakeWeb.Endpoint,
     formats: [html: AriakeWeb.ErrorHTML, json: AriakeWeb.ErrorJSON],
     layout: false
   ],
-  pubsub_server: AriakeWeb.PubSub,
-  live_view: [signing_salt: "jtVxsc82"]
+  pubsub_server: Ariake.PubSub,
+  live_view: [signing_salt: "pfId3pdn"]
 
 # Configure esbuild (the version is required)
 config :esbuild,
@@ -45,26 +58,6 @@ config :tailwind,
     cd: Path.expand("../apps/ariake_web/assets", __DIR__)
   ]
 
-# Configure Mix tasks and generators
-config :ariake,
-  ecto_repos: [Ariake.Repo]
-
-# Configures the mailer
-#
-# By default it uses the "Local" adapter which stores the emails
-# locally. You can see the emails in your browser, at "/dev/mailbox".
-#
-# For production it's recommended to configure a different adapter
-# at the `config/runtime.exs`.
-config :ariake, Ariake.Mailer, adapter: Swoosh.Adapters.Local
-
-# Sample configuration:
-#
-#     config :logger, :console,
-#       level: :info,
-#       format: "$date $time [$level] $metadata$message\n",
-#       metadata: [:user_id]
-#
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",

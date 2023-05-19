@@ -1,2 +1,2 @@
 ExUnit.start()
-Ecto.Adapters.SQL.Sandbox.mode(AriakeWeb.Repo, :manual)
+Ecto.Adapters.SQL.Sandbox.mode(Ariake.Repo, :manual)

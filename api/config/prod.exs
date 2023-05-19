@@ -12,3 +12,12 @@ import Config
 config :ariake_web, AriakeWeb.Endpoint,
   url: [host: "example.com", port: 80],
   cache_static_manifest: "priv/static/cache_manifest.json"
+
+# Configures Swoosh API Client
+config :swoosh, :api_client, Ariake.Finch
+
+# Do not print debug messages in production
+config :logger, level: :info
+
+# Runtime production configuration, including reading
+# of environment variables, is done on config/runtime.exs.

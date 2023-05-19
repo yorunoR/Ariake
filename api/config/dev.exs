@@ -1,5 +1,15 @@
 import Config
 
+# Configure your database
+config :ariake, Ariake.Repo,
+  username: "postgres",
+  password: "postgres",
+  hostname: "localhost",
+  database: "ariake_dev",
+  stacktrace: true,
+  show_sensitive_data_on_connection_error: true,
+  pool_size: 10
+
 # For development, we disable any cache and enable
 # debugging and code reloading.
 #
@@ -13,7 +23,7 @@ config :ariake_web, AriakeWeb.Endpoint,
   check_origin: false,
   code_reloader: true,
   debug_errors: true,
-  secret_key_base: "BPpIp1ogOV/t+YDFo36xOz+lPOj12cRgjqI38dLowMckwB+hQwLjazir/Qdyv2Fj",
+  secret_key_base: "LjfgEZCeTchv2L4Sh+uaNsggR/IB8naiJQSYGW4P64VXveGhJlyHEYt4nU5FCGbp",
   watchers: [
     esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]},
     tailwind: {Tailwind, :install_and_run, [:default, ~w(--watch)]}
@@ -55,12 +65,15 @@ config :ariake_web, AriakeWeb.Endpoint,
 # Enable dev routes for dashboard and mailbox
 config :ariake_web, dev_routes: true
 
-# Configure your database
-config :ariake, Ariake.Repo,
-  username: "postgres",
-  password: "postgres",
-  hostname: "localhost",
-  database: "ariake_dev",
-  stacktrace: true,
-  show_sensitive_data_on_connection_error: true,
-  pool_size: 10
+# Do not include metadata nor timestamps in development logs
+config :logger, :console, format: "[$level] $message\n"
+
+# Initialize plugs at runtime for faster development compilation
+config :phoenix, :plug_init_mode, :runtime
+
+# Disable swoosh api client as it is only required for production adapters.
+config :swoosh, :api_client, false
+
+# Set a higher stacktrace during development. Avoid configuring such
+# in production as building large stacktraces may be expensive.
+config :phoenix, :stacktrace_depth, 20

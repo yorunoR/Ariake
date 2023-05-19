@@ -1,12 +1,5 @@
 import Config
 
-# We don't run a server during test. If one is required,
-# you can enable the server option below.
-config :ariake_web, AriakeWeb.Endpoint,
-  http: [ip: {127, 0, 0, 1}, port: 4002],
-  secret_key_base: "PW5XWOyVeYV5/HeviMH7q3cWyWKa1Gh66zjyJepnktxjA8egKNXP9wAK0mHcgj7T",
-  server: false
-
 # Configure your database
 #
 # The MIX_TEST_PARTITION environment variable can be used
@@ -19,3 +12,22 @@ config :ariake, Ariake.Repo,
   database: "ariake_test#{System.get_env("MIX_TEST_PARTITION")}",
   pool: Ecto.Adapters.SQL.Sandbox,
   pool_size: 10
+
+# We don't run a server during test. If one is required,
+# you can enable the server option below.
+config :ariake_web, AriakeWeb.Endpoint,
+  http: [ip: {127, 0, 0, 1}, port: 4002],
+  secret_key_base: "fvvwvUHZ371ZN567DVsN+HIHBgRz4Mtfx9ylYLrVOR0g2kg+BLEaydPd0NNgBkku",
+  server: false
+
+# Print only warnings and errors during test
+config :logger, level: :warning
+
+# In test we don't send emails.
+config :ariake, Ariake.Mailer, adapter: Swoosh.Adapters.Test
+
+# Disable swoosh api client as it is only required for production adapters.
+config :swoosh, :api_client, false
+
+# Initialize plugs at runtime for faster test compilation
+config :phoenix, :plug_init_mode, :runtime
