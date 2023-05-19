@@ -1,6 +1,10 @@
 defmodule AriakeWeb.Router do
   use AriakeWeb, :router
 
+  use Kaffy.Routes,
+    scope: "/admin",
+    pipe_through: [:fetch_current_admin_user, :require_authenticated_admin_user]
+
   import AriakeWeb.AdminUserAuth
 
   pipeline :browser do
