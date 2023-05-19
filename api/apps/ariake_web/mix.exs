@@ -36,6 +36,7 @@ defmodule AriakeWeb.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:dataloader, "~> 1.0"},
       {:phoenix, "~> 1.7.2"},
       {:phoenix_ecto, "~> 4.4"},
       {:phoenix_html, "~> 3.3"},
