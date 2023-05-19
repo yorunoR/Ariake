@@ -9,6 +9,42 @@
 # move said applications out of the umbrella.
 import Config
 
+config :ariake_web,
+  ecto_repos: [AriakeWeb.Repo],
+  generators: [context_app: false]
+
+# Configures the endpoint
+config :ariake_web, AriakeWeb.Endpoint,
+  url: [host: "localhost"],
+  render_errors: [
+    formats: [html: AriakeWeb.ErrorHTML, json: AriakeWeb.ErrorJSON],
+    layout: false
+  ],
+  pubsub_server: AriakeWeb.PubSub,
+  live_view: [signing_salt: "jtVxsc82"]
+
+# Configure esbuild (the version is required)
+config :esbuild,
+  version: "0.17.11",
+  default: [
+    args:
+      ~w(js/app.js --bundle --target=es2017 --outdir=../priv/static/assets --external:/fonts/* --external:/images/*),
+    cd: Path.expand("../apps/ariake_web/assets", __DIR__),
+    env: %{"NODE_PATH" => Path.expand("../deps", __DIR__)}
+  ]
+
+# Configure tailwind (the version is required)
+config :tailwind,
+  version: "3.2.7",
+  default: [
+    args: ~w(
+      --config=tailwind.config.js
+      --input=css/app.css
+      --output=../priv/static/assets/app.css
+    ),
+    cd: Path.expand("../apps/ariake_web/assets", __DIR__)
+  ]
+
 # Configure Mix tasks and generators
 config :ariake,
   ecto_repos: [Ariake.Repo]
