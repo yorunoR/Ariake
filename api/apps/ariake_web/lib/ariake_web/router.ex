@@ -31,6 +31,11 @@ defmodule AriakeWeb.Router do
   # scope "/api", AriakeWeb do
   #   pipe_through :api
   # end
+  scope "/" do
+    pipe_through :api
+
+    forward "/api", Absinthe.Plug, schema: Graphql.Schema
+  end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development
   if Application.compile_env(:ariake_web, :dev_routes) do
@@ -46,6 +51,15 @@ defmodule AriakeWeb.Router do
 
       live_dashboard "/dashboard", metrics: AriakeWeb.Telemetry
       forward "/mailbox", Plug.Swoosh.MailboxPreview
+    end
+
+    scope "/dev" do
+      pipe_through :api
+
+      forward "/graphiql", Absinthe.Plug.GraphiQL,
+        schema: Graphql.Schema,
+        interface: :simple,
+        socket: AriakeWeb.UserSocket
     end
   end
 

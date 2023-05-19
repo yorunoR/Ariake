@@ -1,5 +1,6 @@
 defmodule AriakeWeb.UserSocket do
   use Phoenix.Socket
+  use Absinthe.Phoenix.Socket, schema: Graphql.Schema
 
   # A Socket handler
   #
@@ -18,7 +19,6 @@ defmodule AriakeWeb.UserSocket do
   #
   # See the [`Channels guide`](https://hexdocs.pm/phoenix/channels.html)
   # for further details.
-
 
   # Socket params are passed from the client and can
   # be used to verify and authenticate a user. After

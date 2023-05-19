@@ -52,7 +52,8 @@ defmodule AriakeWeb.MixProject do
       {:jason, "~> 1.2"},
       {:plug_cowboy, "~> 2.5"},
       {:phoenix_view, "~> 2.0.2"},
-      {:kaffy, "~> 0.9.2"}
+      {:kaffy, "~> 0.9.2"},
+      {:absinthe_phoenix, "~> 2.0"}
     ]
   end
 
