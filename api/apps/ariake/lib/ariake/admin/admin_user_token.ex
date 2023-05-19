@@ -1,5 +1,5 @@
 defmodule Ariake.Admin.AdminUserToken do
-  use Ecto.Schema
+  use Ariake.Schema
   import Ecto.Query
   alias Ariake.Admin.AdminUserToken
 

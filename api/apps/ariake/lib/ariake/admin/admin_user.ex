@@ -1,5 +1,5 @@
 defmodule Ariake.Admin.AdminUser do
-  use Ecto.Schema
+  use Ariake.Schema
   import Ecto.Changeset
 
   schema "admin_user" do
