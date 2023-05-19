@@ -18,26 +18,9 @@ defmodule AriakeWeb.AdminUserRegistrationLive do
         </:subtitle>
       </.header>
 
-      <.simple_form
-        for={@form}
-        id="registration_form"
-        phx-submit="save"
-        phx-change="validate"
-        phx-trigger-action={@trigger_submit}
-        action={~p"/admin_user/log_in?_action=registered"}
-        method="post"
-      >
-        <.error :if={@check_errors}>
-          Oops, something went wrong! Please check the errors below.
-        </.error>
-
-        <.input field={@form[:email]} type="email" label="Email" required />
-        <.input field={@form[:password]} type="password" label="Password" required />
-
-        <:actions>
-          <.button phx-disable-with="Creating account..." class="w-full">Create an account</.button>
-        </:actions>
-      </.simple_form>
+      <div class="text-center" style="font-size: 40px; margin-top: 60px">
+        <b> Not accepted now. </b>
+      </div>
     </div>
     """
   end
