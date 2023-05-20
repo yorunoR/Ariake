@@ -14,6 +14,9 @@
   },
   "dependencies": {
     "@quasar/extras": "^1.16.4",
+    "@urql/exchange-auth": "^2.1.2",
+    "@urql/vue": "^1.1.1",
+    "graphql": "^16.6.0",
     "pinia": "^2.0.36",
     "primeflex": "^3.3.0",
     "primeicons": "^6.0.1",
