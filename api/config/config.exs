@@ -9,6 +9,8 @@
 # move said applications out of the umbrella.
 import Config
 
+config :ariake, Ariake.Repo, migration_timestamps: [type: :utc_datetime_usec]
+
 # Configure Mix tasks and generators
 config :ariake,
   ecto_repos: [Ariake.Repo]
@@ -65,6 +67,11 @@ config :logger, :console,
 
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
+
+config :kaffy,
+  otp_app: :ariake,
+  ecto_repo: Ariake.Repo,
+  router: AriakeWeb.Router
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

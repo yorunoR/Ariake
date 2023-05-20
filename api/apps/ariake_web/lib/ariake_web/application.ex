@@ -11,9 +11,10 @@ defmodule AriakeWeb.Application do
       # Start the Telemetry supervisor
       AriakeWeb.Telemetry,
       # Start the Endpoint (http/https)
-      AriakeWeb.Endpoint
+      AriakeWeb.Endpoint,
       # Start a worker by calling: AriakeWeb.Worker.start_link(arg)
       # {AriakeWeb.Worker, arg}
+      {Absinthe.Subscription, AriakeWeb.Endpoint}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

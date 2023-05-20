@@ -1,5 +1,6 @@
 defmodule AriakeWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :ariake_web
+  use Absinthe.Phoenix.Endpoint
 
   # The session will be stored in the cookie and signed,
   # this means its contents can be read but not tampered with.
@@ -10,6 +11,10 @@ defmodule AriakeWeb.Endpoint do
     signing_salt: "C5qsvt7J",
     same_site: "Lax"
   ]
+
+  socket "/socket", AriakeWeb.UserSocket,
+    websocket: true,
+    longpoll: false
 
   socket "/live", Phoenix.LiveView.Socket, websocket: [connect_info: [session: @session_options]]
 
@@ -22,6 +27,12 @@ defmodule AriakeWeb.Endpoint do
     from: :ariake_web,
     gzip: false,
     only: AriakeWeb.static_paths()
+
+  plug Plug.Static,
+    at: "/kaffy",
+    from: :kaffy,
+    gzip: false,
+    only: ~w(assets)
 
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.

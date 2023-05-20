@@ -36,12 +36,14 @@ defmodule Ariake.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:bcrypt_elixir, "~> 3.0"},
       {:phoenix_pubsub, "~> 2.1"},
       {:ecto_sql, "~> 3.6"},
       {:postgrex, ">= 0.0.0"},
       {:jason, "~> 1.2"},
       {:swoosh, "~> 1.3"},
-      {:finch, "~> 0.13"}
+      {:finch, "~> 0.13"},
+      {:ecto_soft_delete, "~> 2.0"}
     ]
   end
 
@@ -51,9 +53,9 @@ defmodule Ariake.MixProject do
   defp aliases do
     [
       setup: ["deps.get", "ecto.setup"],
-      "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
-      "ecto.reset": ["ecto.drop", "ecto.setup"],
-      test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"]
+      "ecto.setup": ["ecto.migrate", "run priv/repo/seeds.exs"],
+      "ecto.reset": ["ecto.rollback --all", "ecto.setup"],
+      test: ["ecto.migrate --quiet", "test"]
     ]
   end
 end
