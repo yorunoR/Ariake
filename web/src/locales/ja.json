@@ -1,0 +1,27 @@
+{
+  "common": {},
+  "apiError": {
+    "networkError": "サーバへ接続できません。ネットワーク環境をご確認ください。",
+    "badRequest": "不正な形式のリクエストです。",
+    "unauthorized": "ログインしてください。",
+    "forbidden": "アクセス権限がありません。",
+    "notFound": "該当データがみつかりません。",
+    "unprocessableEntity": "データに誤りがあるため処理を完了できませんでした。",
+    "internalServerError": "サーバ内部でエラーが発生しました",
+    "serviceUnavailable": "ただ今サーバを御利用できません。"
+  },
+  "firebaseAuth": {
+    "signup": "サインアップ",
+    "signin": "サインイン",
+    "login": "ログイン",
+    "signout": "サインアウト",
+    "resetPassword": "パスワード設定",
+    "errors": {
+      "invalidEmail": "Emailの形式が間違っています。",
+      "emailAlreadyInUse": "既に登録済みです。",
+      "argumentError": "入力値に不備があります。",
+      "networkFailed": "接続に失敗しました。",
+      "invalidOperation": "操作が完了していません。"
+    }
+  }
+}
