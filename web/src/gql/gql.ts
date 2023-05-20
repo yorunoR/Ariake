@@ -14,6 +14,7 @@ import type { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-
  */
 const documents = {
     "\n  query Ping {\n    ping {\n      status\n    }\n  }\n": types.PingDocument,
+    "\n  subscription NewUser {\n    newUser {\n      id\n      name\n    }\n  }\n": types.NewUserDocument,
 };
 
 /**
@@ -34,6 +35,10 @@ export function graphql(source: string): unknown;
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(source: "\n  query Ping {\n    ping {\n      status\n    }\n  }\n"): (typeof documents)["\n  query Ping {\n    ping {\n      status\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n  subscription NewUser {\n    newUser {\n      id\n      name\n    }\n  }\n"): (typeof documents)["\n  subscription NewUser {\n    newUser {\n      id\n      name\n    }\n  }\n"];
 
 export function graphql(source: string) {
   return (documents as any)[source] ?? {};

@@ -11,12 +11,12 @@
         </p>
       </div>
     </section>
-    <!--section>
+    <section>
       <h1>Subscription</h1>
       <div v-if="userData">
         {{ userData.newUser.name }}
       </div>
-    </section-->
+    </section>
   </div>
 </template>
 
@@ -24,11 +24,11 @@
 import { useQuery, useSubscription } from '@urql/vue'
 import { graphql } from '@/gql'
 import Ping from '@/doc/query/Ping'
-// import NewUser from '@/doc/subscription/NewUser'
+import NewUser from '@/doc/subscription/NewUser'
 
 const query = graphql(Ping)
-// const subscription = graphql(NewUser)
+const subscription = graphql(NewUser)
 
 const { fetching, error, data } = useQuery({ query })
-// const { data: userData } = useSubscription({ query: subscription })
+const { data: userData } = useSubscription({ query: subscription })
 </script>
