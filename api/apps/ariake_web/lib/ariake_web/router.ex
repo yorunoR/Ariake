@@ -17,9 +17,10 @@ defmodule AriakeWeb.Router do
     plug :fetch_current_admin_user
   end
 
-  pipeline :api do
+  pipeline :grapql_api do
     plug CORSPlug
     plug :accepts, ["json"]
+    plug AriakeWeb.AbsintheAuthPlug
   end
 
   scope "/", AriakeWeb do
@@ -33,7 +34,7 @@ defmodule AriakeWeb.Router do
   #   pipe_through :api
   # end
   scope "/" do
-    pipe_through :api
+    pipe_through :grapql_api
 
     forward "/api", Absinthe.Plug, schema: Graphql.Schema
   end
@@ -55,7 +56,7 @@ defmodule AriakeWeb.Router do
     end
 
     scope "/dev" do
-      pipe_through :api
+      pipe_through :grapql_api
 
       forward "/graphiql", Absinthe.Plug.GraphiQL,
         schema: Graphql.Schema,
