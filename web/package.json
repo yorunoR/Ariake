@@ -10,7 +10,9 @@
     "build-only": "vite build",
     "type-check": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
-    "format": "prettier --write src/"
+    "format": "prettier --write src/",
+    "codegen": "graphql-codegen --config codegen.ts",
+    "code": "yarn codegen && yarn lint && yarn format"
   },
   "dependencies": {
     "@quasar/extras": "^1.16.4",
@@ -26,6 +28,8 @@
     "vue-router": "^4.2.0"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "^3.3.1",
+    "@graphql-codegen/client-preset": "^3.0.1",
     "@quasar/vite-plugin": "^1.3.3",
     "@rushstack/eslint-patch": "^1.2.0",
     "@tsconfig/node18": "^2.0.1",
