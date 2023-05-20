@@ -55,7 +55,9 @@ defmodule AriakeWeb.MixProject do
       {:phoenix_view, "~> 2.0.2"},
       {:kaffy, "~> 0.9.2"},
       {:absinthe_phoenix, "~> 2.0"},
-      {:cors_plug, "~> 3.0"}
+      {:cors_plug, "~> 3.0"},
+      {:req, "~> 0.3.0"},
+      {:joken, "~> 2.5"}
     ]
   end
 
