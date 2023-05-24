@@ -43,7 +43,8 @@ defmodule Ariake.MixProject do
       {:jason, "~> 1.2"},
       {:swoosh, "~> 1.3"},
       {:finch, "~> 0.13"},
-      {:ecto_soft_delete, "~> 2.0"}
+      {:ecto_soft_delete, "~> 2.0"},
+      {:pgvector, "~> 0.1.0"}
     ]
   end
 
