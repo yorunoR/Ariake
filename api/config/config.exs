@@ -9,7 +9,9 @@
 # move said applications out of the umbrella.
 import Config
 
-config :ariake, Ariake.Repo, migration_timestamps: [type: :utc_datetime_usec]
+config :ariake, Ariake.Repo,
+  types: Ariake.PostgrexTypes,
+  migration_timestamps: [type: :utc_datetime_usec]
 
 # Configure Mix tasks and generators
 config :ariake,
